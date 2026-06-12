@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>网络冲浪人格测试</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="main-container">
+    <div class="header" id="quizTitle">
+      <h1>网络冲浪人格测试</h1>
+      <p class="sub">发现你在数字世界的真实面貌 · 多版本可选 · 赛博人格分析</p>
+    </div>
+
+    <div id="bootPage" class="page">
+      <div class="card loading-wrap">
+        <div class="spinner"></div>
+        <p>正在加载题库...</p>
+        <div class="progress-bar"><div class="progress-fill" style="width:45%"></div></div>
+      </div>
+    </div>
+
+    <div id="homePage" class="page hidden">
+      <div class="card">
+        <p class="center-note">选择测试版本，开始你的赛博人格之旅</p>
+
+        <div class="version-grid">
+          <div class="version-card" onclick="startQuiz(12)">
+            <div class="vc-badge vc-badge-hidden"></div>
+            <div class="vc-title">速测版</div>
+            <div class="vc-count">12 题</div>
+            <div class="vc-time">约 2 分钟</div>
+            <div class="vc-feature">快速筛查 · 了解基本倾向</div>
+          </div>
+
+          <div class="version-card rec" onclick="startQuiz(24)">
+            <div class="vc-badge">推荐</div>
+            <div class="vc-title">标准版</div>
+            <div class="vc-count">24 题</div>
+            <div class="vc-time">约 4 分钟</div>
+            <div class="vc-feature">平衡深度与效率</div>
+          </div>
+
+          <div class="version-card" onclick="startQuiz(48)">
+            <div class="vc-badge vc-badge-hidden"></div>
+            <div class="vc-title">进阶版</div>
+            <div class="vc-count">48 题</div>
+            <div class="vc-time">约 8 分钟</div>
+            <div class="vc-feature">深度分析 · 更多维度</div>
+          </div>
+
+          <div class="version-card rec" onclick="startQuiz(64)">
+            <div class="vc-badge">推荐</div>
+            <div class="vc-title">深度版</div>
+            <div class="vc-count">64 题</div>
+            <div class="vc-time">约 12 分钟</div>
+            <div class="vc-feature">最精准 · 完整人格画像</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="quizPage" class="page hidden">
+      <div class="card quiz-card">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div id="questionArea"></div>
+
+        <div class="nav-btns">
+          <button class="btn btn-outline hidden" id="prevBtn" onclick="prevQuestion()">上一题</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="loadingPage" class="page hidden">
+      <div class="card loading-wrap">
+        <div class="spinner"></div>
+        <p>正在生成你的人格测评...</p>
+        <div class="progress-bar">
+          <div class="progress-fill" id="loadProgressFill" style="width:0%"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="resultPage" class="page hidden">
+      <div class="card">
+        <div id="screenshotTarget">
+          <div class="result-header" id="resultHeader"></div>
+          <div class="result-desc" id="resultDesc"></div>
+          <div class="result-section" id="resultTraits"></div>
+          <div class="result-section" id="resultQuotes"></div>
+          <div class="radar-container">
+            <canvas id="radarCanvas"></canvas>
+          </div>
+          <div class="result-section" id="resultTip"></div>
+        </div>
+
+        <div class="share-section">
+          <p>分享你的赛博人格身份</p>
+          <div class="share-btns">
+            <button class="btn btn-outline" onclick="copyResultText()">复制结果文字</button>
+            <button class="btn btn-outline" onclick="restartQuiz()">重新测试</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="errorPage" class="page hidden">
+      <div class="card">
+        <div class="error-box" id="errorBox"></div>
+      </div>
+    </div>
+
+    <div id="modalOverlay" class="modal-overlay">
+      <div class="modal-box" id="modalBox"></div>
+    </div>
+
+    <div class="footer">网络冲浪人格测试 · 仅供娱乐参考</div>
+  </div>
+
+  <script src="./questions.js"></script>
+  <script src="./personalities.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
